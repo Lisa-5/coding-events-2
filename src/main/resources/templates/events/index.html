@@ -3,22 +3,24 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<nav th:replace="fragments :: header"></nav>
+<nav th:replace="fragments :: header">
+
+</nav>
 
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Select</th>
             <th>ID</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Edit</th>
         </tr>
     </thead>
     <tr th:each="event : ${events}">
-        <td><a th:href="@{/events/edit/{id}(id=${event.id})}"></a></td>
         <td th:text="${event.id}"></td>
         <td th:text="${event.name}"></td>
         <td th:text="${event.description}"></td>
+        <td ><a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a></td>
     </tr>
 </table>
 

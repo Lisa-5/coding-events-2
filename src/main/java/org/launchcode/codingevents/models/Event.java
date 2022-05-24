@@ -29,7 +29,10 @@ public class Event {
         nextId++;
     }
 
-    public Event() {}
+    public Event() {
+        this.id = nextId;
+        nextId++;
+    }
 
     public String getName() {
         return name;

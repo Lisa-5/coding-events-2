@@ -20,8 +20,8 @@ public abstract class AbstractEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Event)) return false;
-        AbstractEntity event = (AbstractEntity) o;
-        return id == event.id;
+        AbstractEntity entity = (AbstractEntity) o;
+        return id == entity.id;
     }
 
     @Override

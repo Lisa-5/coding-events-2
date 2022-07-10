@@ -1,0 +1,13 @@
+Person Class:
+
+Fields:
+- id  int
+- Name  String
+- Email  String
+- Password  String
+- List of Events  List<Event>
+- Favorite Type of Event  EventCategory
+
+Methods
+-- Getters and Setters
+-- Get Favorite Events (returns list of all event with favorite event category)

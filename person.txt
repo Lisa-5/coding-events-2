@@ -5,8 +5,8 @@ Fields:
 - Name  String
 - Email  String
 - Password  String
-- List of Events  List<Event>
-- Favorite Type of Event  EventCategory
+- List of Events  List<Event>  Many to Many
+- Favorite Type of Event  EventCategory  Many to One
 
 Methods
 -- Getters and Setters

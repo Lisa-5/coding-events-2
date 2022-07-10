@@ -1,7 +1,7 @@
 # coding-events-2
 
 #purpose 
-The app tracks events at different locations and offers details about these events.
+The application tracks events at different locations and offers details about these events.
 
 #state 
 The user is able to add events to the application and attach tags to the events.

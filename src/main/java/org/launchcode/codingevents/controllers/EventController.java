@@ -34,19 +34,25 @@ public class EventController {
     private TagRepository tagRepository;
 
     @GetMapping
-    public String displayAllEvents(Model model, @RequestParam(required = false) Integer categoryId ) {
+    public String displayAllEvents(Model model, @RequestParam(required = false) Integer categoryId, @RequestParam(required = false) Integer tagId ) {
 
-        if (categoryId == null) {
+        if (categoryId == null && tagId == null) {
             model.addAttribute("title", "All Events");
             model.addAttribute("events", eventRepository.findAll());
         } else {
             Optional<EventCategory> result = eventCategoryRepository.findById(categoryId);
+            Optional<Tag> tagChoice = tagRepository.findById(tagId);
             if(result.isEmpty()) {
                 model.addAttribute("title", "Invalid Category ID: " + categoryId);
-            } else {
+            } else if(result.isPresent()){
                 EventCategory category = result.get();
                 model.addAttribute("title", "Events in category: " + category.getName());
                 model.addAttribute("events", category.getEvents());
+            } else if (tagChoice.isPresent()) {
+                Tag tag = tagChoice.get();
+                model.addAttribute("title", "Events with tag: " + tag.getDisplayName());
+                model.addAttribute("tags", tag.getEvents());
+                return "events/tags";
             }
 
         }
@@ -115,7 +121,7 @@ public class EventController {
         EventTagDTO eventTag = new EventTagDTO();
         eventTag.setEvent(event);
         model.addAttribute("eventTag", eventTag);
-        return "events/add-tag.html";
+        return "events/add-tag";
     }
 
     @PostMapping("add-tag")
